@@ -1,22 +1,25 @@
 package pl.woonkievitch.Authentication.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name ="myUser")
+@Table(name ="my_user")
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private long id;
     private String login;
     private String password;
     private int activate;
+    @ManyToMany
+    @JoinTable(name="user_role",
+            joinColumns = @JoinColumn(name ="user_id"),
+            inverseJoinColumns = @JoinColumn(name ="role_id") )
     private Set<Role> roleSet;
 
+    private String email;
 
     public long getId() {
         return id;
@@ -52,5 +55,13 @@ public class User {
 
     public void setRoleSet(Set<Role> roleSet) {
         this.roleSet = roleSet;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

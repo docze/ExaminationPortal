@@ -1,28 +1,27 @@
 package pl.woonkievitch.Authentication.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Role")
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue
+    @Column(name="role_id")
     private int id;
-    private String name;
+    private String role;
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
+    public String getRole() {
 
-        return name;
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String name) {
+        this.role = role;
     }
+
 }

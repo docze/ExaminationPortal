@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pl.woonkievitch.Authentication.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUserLogin(String login);
+    User findByEmail(String email);
 }
